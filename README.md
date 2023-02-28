@@ -1,30 +1,47 @@
-# Topic: Introduction to Markdown
+# Topic: Project Setup / Setting Up The Development Environment:
 
-## What is Markdown?
-- Markdown is a lightweight markup language that allows you to write plain text using simple syntax.
-- It is used to format text for the web and other digital documents.
-- Markdown was created by John Gruber in 2004.
+## Essentials:
+- python --version
+- pip install pipenv   
+<!-- Pipenv package manager, for managing dependencies in Python projects through pipfiles  -->
 
-## Basic Syntax
-### Headings
-- Headings are created using the '#' symbol, followed by a space and the heading text.
-- There are six levels of headings in Markdown, ranging from '#' (h1) to '######' (h6).
-- Example: '# This is an h1 heading'
+## Project Setup / Setting Up:
+- mkdir directoryname
+- pipenv install django
+- pipenv shell 
+<!-- For activate virtualenv -->
+- django-admin startproject myproject .
+<!-- last . for in current working directory -->
+- python manage.py runserver  
+   ### Using Integration Terminal in VSCode:
+   - pipenv --venv
+     <!-- This is for activating venv in terminal automatically -->
+     <!-- type in cmd provide venv path|past it in interprater path with /bin/python-->
+ 
+# Create app:
+- python manage.py startapp appname
+  <!-- add app name in settings.py apps section  -->
 
-### Lists
-- Unordered lists are created using '-' or '+' symbol, followed by a space and the list item text.
-- Ordered lists are created using numbers, followed by a period and a space, and the list item text.
-- Example:
-    - Unordered list item 1
-    - Unordered list item 2
-    1. Ordered list item 1
-    2. Ordered list item 2
+# Templates:
 
-### Emphasis
-- Emphasis can be added to text using asterisks or underscores.
-- One asterisk/underscore for italic, two for bold, three for bold and italic.
-- Example: *italic*, **bold**, ***bold and italic***
+1. Create template in first app
+   <!-- - If you do this, you dont need to play settings.py to add the template -->
+2. Create in outside 
+   <!-- - Then you need to add the template to the settings.py template section
+        - also need to add the static file path in settings.py -->
 
-## Conclusion
-- Markdown is a simple and powerful tool for formatting text for the web and other digital documents.
-- With just a few basic syntax rules, you can create well-structured, easy-to-read documents in Markdown.
+### Change Template Through view.py:
+  @view.py
+- return render(request, "index.html", {"name": "Ahmad"})      
+  <!-- pass dictionary to add value in template -->
+  @.html
+- hello {{name}}
+  <!-- for putting value here -->
+
+### Add python condition in template:
+  - {%if name%}
+    <h1>hello {{name}}</h1>
+    {%else%}
+    <h1>hello world</h1>
+    {%endif%}
+    <h1>hi,</h1>  
